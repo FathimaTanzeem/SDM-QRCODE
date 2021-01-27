@@ -11,6 +11,7 @@ import Register from "./Register";
 import Project from "./Project";
 import Details from "./Details";
 import Lost from "./Lost";
+import AllStudents from "./AllStudents";
 import { Content } from "antd/lib/layout/layout";
 
 const { SubMenu } = Menu;
@@ -49,13 +50,14 @@ class Home extends Component {
         page = <Lost />;
         break;
       case "6":
+        page = <AllStudents />;
         break;
       default:
         break;
 
     }
     return (
-      <div style={{backgroundColor:"#111827"}} >
+      <div style={{backgroundColor: "#111827"}} >
         <Menu  onClick={this.handleChange} mode="horizontal">
           <Menu.Item key="1" icon={<UserOutlined />}>
             Register
@@ -74,8 +76,8 @@ class Home extends Component {
             <a href="/">LogOut</a>
           </Menu.Item>
         </Menu>
-        <Content style={{ margin: "24px 16px 0" }}>
-          <div style={{ padding: 24, backgroundColor: "#111827", minHeight: 360 }}>
+        <Content style={{ margin: "24px 16px 0",backgroundColor: "#111827" }}>
+          <div style={{ padding: 24, minHeight: 360 ,backgroundColor: "#111827"}}>
             {page}
           </div>
         </Content>

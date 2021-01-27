@@ -81,7 +81,7 @@ function Project() {
           textAlign:"center"
         }}
       >
-        <h1>PROJECT DETAILS</h1>
+        <h2 style={{fontWeight:"bold"}}>PROJECT DETAILS</h2>
 
         <Form
           {...layout}

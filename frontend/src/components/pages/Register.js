@@ -84,7 +84,7 @@ function Register() {
           textAlign:"center"
         }}
       >
-        <h1 style={{marginLeft:"50px"}}>STUDENT REGISTRATION</h1>
+        <h2 style={{marginLeft:"50px",fontWeight:"bold"}}>STUDENT REGISTRATION</h2>
         <Form
          {...layout}
           onFinish={onFinish}

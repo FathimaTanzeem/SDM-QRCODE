@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import QrReader from "react-qr-reader";
+import moment from "moment";
 import {
   Drawer,
   List,
@@ -107,8 +108,12 @@ function Details() {
 
   const DescriptionItem = ({ title, content }) => (
     <div className="site-description-item-profile-wrapper">
-      <p className="site-description-item-profile-p-label">{title}:</p>
-      {content}
+      <p
+        className="site-description-item-profile-p-label"
+        style={{ fontWeight: "bold", fontSize: "18px" }}
+      >
+        {title} : {content}
+      </p>
     </div>
   );
 
@@ -151,7 +156,9 @@ function Details() {
                     </h3>
                   }
                   description={
-                    <h4 style={{ color: "white" }}>{item.branch}</h4>
+                    <a style={{ color: "white" }}>
+                      {item.usn} , {item.sem}sem {item.branch}
+                    </a>
                   }
                 />
               </List.Item>
@@ -167,12 +174,20 @@ function Details() {
           >
             <p
               className="site-description-item-profile-p"
-              style={{ marginBottom: 24,fontWeight:"bolder",fontSize:"20px" }}
+              style={{
+                marginBottom: "24px",
+                fontWeight: "bolder",
+                fontSize: "22px",
+              }}
             >
               Student Profile
             </p>
-            <p className="site-description-item-profile-p"
-            style={{fontWeight:"bold",fontSize:"15px"}}>Personal</p>
+            <p
+              className="site-description-item-profile-p"
+              style={{ fontWeight: "bold", fontSize: "20px" }}
+            >
+              Personal
+            </p>
             <Row>
               <Col span={12}>
                 <DescriptionItem
@@ -213,8 +228,12 @@ function Details() {
               </Col>
             </Row>
             <Divider />
-            <p className="site-description-item-profile-p"
-            style={{fontWeight:"bold",fontSize:"15px"}}>Project</p>
+            <p
+              className="site-description-item-profile-p"
+              style={{ fontWeight: "bold", fontSize: "20px" }}
+            >
+              Project
+            </p>
             {data.projects &&
               data.projects.map((project, index) => {
                 return (
@@ -222,7 +241,11 @@ function Details() {
                     <Space>
                       <Collapse ghost>
                         <Panel
-                          header={<a>Project {index + 1}</a>}
+                          header={
+                            <a style={{ fontSize: "18px", fontWeight: "bold" }}>
+                              Project {index + 1}
+                            </a>
+                          }
                           key={index + 1}
                         >
                           <Row>
@@ -242,16 +265,20 @@ function Details() {
                             </Col>
                           </Row>
                           <Row>
-                          <Col span={12}>
+                            <Col span={12}>
                               <DescriptionItem
                                 title="Start"
-                                content={project.project_start}
+                                content={moment(project.project_start).format(
+                                  "MMM YY"
+                                )}
                               />
                             </Col>
                             <Col span={12}>
                               <DescriptionItem
                                 title="End"
-                                content={project.project_end}
+                                content={moment(project.project_end).format(
+                                  "MMM YY"
+                                )}
                               />
                             </Col>
                           </Row>
@@ -270,8 +297,12 @@ function Details() {
                 );
               })}
             <Divider />
-            <p className="site-description-item-profile-p"
-            style={{fontWeight:"bold",fontSize:"15px"}}>Contact</p>
+            <p
+              className="site-description-item-profile-p"
+              style={{ fontWeight: "bold", fontSize: "20px" }}
+            >
+              Contact
+            </p>
             <Row>
               <Col span={12}>
                 <DescriptionItem
@@ -279,6 +310,8 @@ function Details() {
                   content={data.students[0].email}
                 />
               </Col>
+            </Row>
+            <Row>
               <Col span={12}>
                 <DescriptionItem
                   title="Phone Number"
